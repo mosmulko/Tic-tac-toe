@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import statusReducer from "../features/reducers/statusSlice";
-import gameReducer from "../features/reducers/gameSlice";
-import scoresReducer from "../features/reducers/scoresSlice";
+import statusReducer from "./reducers/statusSlice";
+import gameReducer from "./reducers/gameSlice";
+import scoresReducer from "./reducers/scoresSlice";
 
 export default configureStore({
   reducer: {
