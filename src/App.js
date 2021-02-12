@@ -8,7 +8,7 @@ import Leaderboard from "./features/Leaderboard/Leaderboard";
 function App() {
   return (
     <Router>
-      <div>
+      <div className="appGrid">
         <header>Tic-Tac-Toe Game for 2!</header>
 
         <nav>

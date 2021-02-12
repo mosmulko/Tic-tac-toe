@@ -1,39 +1,39 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.appGrid {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 10% 80% 10%;
+  grid-template-areas:
+    "header header"
+    "nav main"
+    "nav footer";
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+header,
+footer {
+  background-color: peachpuff;
 }
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+header {
+  grid-area: header;
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+nav {
+  grid-area: nav;
+  background-color: plum;
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px)
-  }
-  100% {
-    transform: translateY(0px)
-  }
+main {
+  grid-area: main;
+  background-color: powderblue;
+  /* height: 70vh; */
+}
+
+footer {
+  grid-area: footer;
 }
