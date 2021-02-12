@@ -34,17 +34,24 @@ export const gameSlice = createSlice({
     gameReseted: (state, action) => {
       const nextState = { ...initialState };
 
+      // nextState.players.x.name = state.players.x.name;
+      // nextState.players.o.name = state.players.o.name;
 
       return nextState;
     },
     gameFieldMarked: (state, action) => {
+      //run function to check if it was a winning move
+      // if (checkIfWon(state.gameboard, action.payload)) {
+      //   state.currentPlayer.hasWon = true;
+      //   return;
+      // }
       state.availableFields -= 1;
       return state;
     },
-    playersTurnEnded: (state, action) => {
+    playerTurnEnded: (state, action) => {
       const player = state.players[state.currentPlayer];
       player.movesCounter += 1;
-      player.secondsCounter += action.payload.seconds;
+      player.secondsCounter += +action.payload.seconds;
       state.currentPlayer = state.currentPlayer === "x" ? "o" : "x";
       return state;
     },
@@ -55,7 +62,7 @@ export const {
   playersNamesChosen,
   gameReseted,
   gameFieldMarked,
-  playersTurnEnded,
+  playerTurnEnded,
 } = gameSlice.actions;
 
 export const selectGame = (state) => state.game;
