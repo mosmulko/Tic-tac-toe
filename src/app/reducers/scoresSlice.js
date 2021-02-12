@@ -2,7 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const scoresSlice = createSlice({
   name: "scores",
-  initialState: [],
+  initialState: [
+    { name: "Bob", seconds: 25, moves: 3 },
+    { name: "Harry", seconds: 28, moves: 3 },
+  ],
   reducers: {
     scoreAdded: (state = this.initialState, action) => {
       state = [...state, action.payload];
