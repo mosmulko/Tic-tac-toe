@@ -1,81 +1,44 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  playersNamesChosen,
-  gameReseted,
-  playersTurnEnded,
-  selectGame,
-  selectPlayer,
-} from "./features/reducers/gameSlice";
+import Home from "./features/Home/Home";
+import GameLayout from "./features/GameLayout/GameLayout";
+import Leaderboard from "./features/Leaderboard/Leaderboard";
 
 function App() {
-  const game = useSelector(selectGame);
-  const player = useSelector(selectPlayer);
-  const dispatch = useDispatch();
-
-  const [xName, setXName] = useState("");
-  const [oName, setOName] = useState("");
-
-  const handleInputChange = (event) => {
-    const target = event.target;
-    const value = event.target.value;
-
-    target.name === "x" ? setXName(value) : setOName(value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(playersNamesChosen({ x: xName, o: oName }));
-    setOName("");
-    setXName("");
-  };
-
-  const resetGame = () => {
-    dispatch(gameReseted());
-    dispatch(
-      playersNamesChosen({ x: game.players.x.name, o: game.players.o.name })
-    );
-  };
-
-  console.log("Initialstate", game);
   return (
-    <div className="App">
-      {/* <header className="App-header">Hello</header> */}
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <label>
-          Player X name
-          <input
-            name="x"
-            type="text"
-            placeholder={game.players.x.name}
-            value={xName}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br></br>
-        <label>
-          Player O name
-          <input
-            name="o"
-            type="text"
-            placeholder={game.players.o.name}
-            value={oName}
-            onChange={handleInputChange}
-          />
-        </label>
-        <button type="submit"></button>
-      </form>
-      <h2>Player 1 name is {game.players.x.name}</h2>
-      <h2>Player 2 name is {game.players.o.name}</h2>
-      <br></br>
-      <h2>Current player is {player.name}</h2>
-      <button onClick={() => dispatch(playersTurnEnded({ seconds: 30 }))}>
-        Make your move
-      </button>
-      <button onClick={() => resetGame()}>Reset</button>
-    </div>
+    <Router>
+      <div>
+        <header>Tic-Tac-Toe Game for 2!</header>
+
+        <nav>
+          <ul>
+            <li>
+              <Link to="/game">Game</Link>
+            </li>
+            <li>
+              <Link to="/leaderboard">Leaderboard</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <main>
+          <Switch>
+            <Route path="/game">
+              <GameLayout />
+            </Route>
+            <Route path="/leaderboard">
+              <Leaderboard />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </main>
+
+        <footer>Designed and coded by Monika Smulko</footer>
+      </div>
+    </Router>
   );
 }
 
