@@ -11,6 +11,8 @@
     "header header"
     "nav main"
     "nav footer";
+  font-size: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   height: 100%;
 }
 
@@ -29,9 +31,16 @@ nav {
 }
 
 main {
+  display: flex;
+  justify-content: center;
   grid-area: main;
   background-color: powderblue;
   /* height: 70vh; */
+}
+
+main:first-child {
+  height: 100%;
+  width: 100%;
 }
 
 footer {
