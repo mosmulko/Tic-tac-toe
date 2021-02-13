@@ -18,6 +18,7 @@ const initialState = {
     },
   },
   currentPlayer: "x",
+  timer: 30,
   availableFields: 9,
   gameBoard: Array(3).fill(Array(3).fill()),
 };
@@ -53,6 +54,15 @@ export const gameSlice = createSlice({
       state.currentPlayer = state.currentPlayer === "x" ? "o" : "x";
       return state;
     },
+    secondPassed: (state) => {
+      state.timer -= 1;
+      console.log(state.timer);
+      return state;
+    },
+    timerReseted: (state) => {
+      state.timer = initialState.timer;
+      return state;
+    },
   },
 });
 
@@ -61,9 +71,13 @@ export const {
   namesChosen,
   gameFieldMarked,
   playerTurnEnded,
+  secondPassed,
+  timerReseted,
 } = gameSlice.actions;
 
 export const selectGame = (state) => state.game;
+
+export const selectTimer = (state) => state.game.timer;
 
 export const selectCurrentPlayer = (state) =>
   state.game.players[state.game.currentPlayer];
