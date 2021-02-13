@@ -26,18 +26,16 @@ export const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
-    playersNamesChosen: (state, action) => {
-      state.players.x.name = action.payload.x || initialState.players.x.name;
-      state.players.o.name = action.payload.o || initialState.players.o.name;
+    newGameStarted: (state, action) => {
+      state = initialState;
       return state;
     },
-    gameReseted: (state, action) => {
-      const nextState = { ...initialState };
-
-      // nextState.players.x.name = state.players.x.name;
-      // nextState.players.o.name = state.players.o.name;
-
-      return nextState;
+    namesChosen: (state, action) => {
+      if (action.payload) {
+        state.players.x.name = action.payload.x;
+        state.players.o.name = action.payload.o;
+      }
+      return state;
     },
     gameFieldMarked: (state, action) => {
       //run function to check if it was a winning move
@@ -59,15 +57,20 @@ export const gameSlice = createSlice({
 });
 
 export const {
-  playersNamesChosen,
-  gameReseted,
+  newGameStarted,
+  namesChosen,
   gameFieldMarked,
   playerTurnEnded,
 } = gameSlice.actions;
 
 export const selectGame = (state) => state.game;
 
-export const selectPlayer = (state) =>
+export const selectCurrentPlayer = (state) =>
   state.game.players[state.game.currentPlayer];
+
+export const selectNames = (state) => [
+  state.game.players.x.name,
+  state.game.players.o.name,
+];
 
 export default gameSlice.reducer;

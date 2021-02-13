@@ -6,19 +6,11 @@ export const statusSlice = createSlice({
   name: "status",
   initialState,
   reducers: {
-    gameStarted: (state) => (state = "playing"),
-    gameWon: (state) => (state = "won"),
-    gameTied: (state) => (state = "draw"),
-    gameReseted: (state) => (state = initialState),
+    statusChanged: (state, action) => (state = action.payload),
   },
 });
 
-export const {
-  gameStarted,
-  gameWon,
-  gameTied,
-  gameReseted,
-} = statusSlice.actions;
+export const { statusChanged } = statusSlice.actions;
 
 export const selectStatus = (state) => state.status;
 

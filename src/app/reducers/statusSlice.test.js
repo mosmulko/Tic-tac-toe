@@ -1,15 +1,11 @@
-import statusReducer, {
-  gameStarted,
-  gameWon,
-  gameTied,
-  gameReseted,
-} from "./statusSlice.js";
+import statusReducer, { statusChanged } from "./statusSlice.js";
 
 describe("status reducer", () => {
   it("should change to 'playing'", () => {
     expect(
       statusReducer("new", {
-        type: gameStarted,
+        type: statusChanged,
+        payload: "playing",
       })
     ).toEqual("playing");
   });
@@ -17,7 +13,8 @@ describe("status reducer", () => {
   it("should change to 'won'", () => {
     expect(
       statusReducer("playing", {
-        type: gameWon,
+        type: statusChanged,
+        payload: "won",
       })
     ).toEqual("won");
   });
@@ -25,7 +22,8 @@ describe("status reducer", () => {
   it("should change to 'draw'", () => {
     expect(
       statusReducer("playing", {
-        type: gameTied,
+        type: statusChanged,
+        payload: "draw",
       })
     ).toEqual("draw");
   });
@@ -33,7 +31,8 @@ describe("status reducer", () => {
   it("should change to 'new'", () => {
     expect(
       statusReducer("playing", {
-        type: gameReseted,
+        type: statusChanged,
+        payload: "new",
       })
     ).toEqual("new");
   });
