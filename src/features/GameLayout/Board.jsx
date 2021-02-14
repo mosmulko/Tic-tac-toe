@@ -17,8 +17,6 @@ const checkIfPlayerWon = (num, arr, player) => {
     fieldMap.set(i, true);
   i = arr.indexOf(player, i + 1);
   }
-
-  console.log(fieldMap.keys());
   
   if (
     (fieldMap.has(1) && fieldMap.has(2) && fieldMap.has(3)) ||
@@ -41,13 +39,11 @@ function Board({player}) {
 
   useEffect(() => {
     if (winner) {
-      console.log('winner!')
       return dispatch(statusChanged('won'))
     } 
     
     if (availableFields === 0) {
-      console.log('it"s a tie!')
-      dispatch(statusChanged('draw'));
+      return dispatch(statusChanged('draw'));
     }
   })
 
