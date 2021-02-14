@@ -47,16 +47,17 @@ export const gameSlice = createSlice({
       state.availableFields -= 1;
       return state;
     },
-    playerTurnEnded: (state, action) => {
+    playerTurnEnded: (state) => {
       const player = state.players[state.currentPlayer];
       player.movesCounter += 1;
-      player.secondsCounter += +action.payload.seconds;
+      player.secondsCounter += initialState.timer - state.timer;
+      console.log(state.players[state.currentPlayer].secondsCounter);
       state.currentPlayer = state.currentPlayer === "x" ? "o" : "x";
+      state.timer = initialState.timer;
       return state;
     },
     secondPassed: (state) => {
       state.timer -= 1;
-      console.log(state.timer);
       return state;
     },
     timerReseted: (state) => {

@@ -15,8 +15,8 @@ function Timer({max}) {
       } , 1000);
       return () => clearTimeout(timerId);
     } 
-    dispatch(playerTurnEnded({seconds: max}));
-    dispatch(timerReseted());
+    dispatch(playerTurnEnded());
+    // dispatch(timerReseted());
   }, [secondsLeft, dispatch, max]);
   return (
     <div>{secondsLeft}</div>
