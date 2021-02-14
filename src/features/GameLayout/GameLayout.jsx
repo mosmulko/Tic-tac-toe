@@ -10,6 +10,7 @@ import Form from "./Form";
 import Gameboard from "./Gameboard";
 import Winner from "./Winner";
 import Draw from "./Draw";
+import Button from './Button';
 
 function GameLayout() {
   const status = useSelector(selectStatus);
@@ -27,9 +28,7 @@ function GameLayout() {
   const handleButtonRender = (status, names) => {
     if (status === "new") return;
     let message = status === "playing" ? "Reset" : "Start";
-    return (
-      <button onClick={() => startNewGame(status, names)}>{message}</button>
-    );
+    return <Button click={() => startNewGame(status, names)} message={message} />;
   };
 
   return (
@@ -37,7 +36,7 @@ function GameLayout() {
       {
         {
           new: <Form submit={startNewGame} />,
-          playing: <Gameboard />,
+          playing: <Gameboard/>,
           won: <Winner />,
           draw: <Draw />,
         }[status]

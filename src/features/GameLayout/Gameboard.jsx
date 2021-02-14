@@ -1,19 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { statusChanged, selectStatus } from "../../app/reducers/statusSlice";
 import {
   playerTurnEnded,
-  timerReseted,
   selectCurrentPlayer,
 } from "../../app/reducers/gameSlice";
 import Label from "./Label";
 import Timer from "./Timer";
-import TurnEndButton from './TurnEndButton';
-// import Timer from './Timer';
+import Button from './Button';
 
 
-function Gameboard() {
+function  Gameboard() {
   const player = useSelector(selectCurrentPlayer);
+  const dispatch = useDispatch();
   const initialTimer = 30;
 
   return <div>
@@ -22,10 +20,9 @@ function Gameboard() {
       <Label id={player.id}/>
       <h3>{player.name}</h3>
     </div>
-    <Timer max={initialTimer} />
     <div>Board</div>
-    <TurnEndButton max={initialTimer}/>
-    {/* <button onClick={endPlayersTurn}>Next turn</button> */}
+    <Timer max={initialTimer} />
+    <Button click={() => dispatch(playerTurnEnded())} message={'Your turn'} />
   </div>;
 }
 
