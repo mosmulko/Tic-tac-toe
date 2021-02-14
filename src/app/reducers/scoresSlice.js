@@ -9,7 +9,7 @@ export const scoresSlice = createSlice({
   reducers: {
     scoreAdded: (state = this.initialState, action) => {
       state = [...state, action.payload];
-      // sort scores
+      Object.entries(state).sort((a, b) => b[1].localeCompare(a[1]));
     },
   },
 });

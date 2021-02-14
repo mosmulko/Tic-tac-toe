@@ -1,7 +1,7 @@
 import React, { useEffect} from "react";
 import { useDispatch, useSelector} from "react-redux";
 import {
-  playerTurnEnded, secondPassed, selectTimer, timerReseted
+  playerTurnEnded, secondPassed, selectTimer
 } from "../../app/reducers/gameSlice";
 
 

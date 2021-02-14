@@ -1,28 +1,35 @@
+.labelContainer {
+  height: 3.75em;
+  width: 3.75;
+  background-color: white;
+}
+
 .o {
-  font-size: 10em;
+  font-size: 7.5em;
   display: inline-block;
-  width: 0.4em;
+  width: 0.3em;
   box-sizing: content-box;
-  height: 0.4em;
-  border: 0.1em solid black;
+  height: 0.3em;
+  border: 0.09em solid black;
   position: relative;
-  border-radius: 0.35em;
+  border-radius: 0.2625em;
 }
 
 .x {
+  margin-left: 1.4em;
   background: red;
-  height: 100px;
+  height: 3.75em;
   position: relative;
-  width: 20px;
+  width: 0.75em;
   transform: rotate(45deg);
 }
 
 .x:after {
   background: red;
   content: "";
-  height: 20px;
-  left: -40px;
+  height: 0.75em;
+  left: -1.5em;
   position: absolute;
-  top: 40px;
-  width: 100px;
+  top: 1.5em;
+  width: 3.75em;
 }

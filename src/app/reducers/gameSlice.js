@@ -5,22 +5,18 @@ const initialState = {
     x: {
       id: "x",
       name: "Player X",
-      hasWon: false,
       movesCounter: 0,
       secondsCounter: 0,
     },
     o: {
       id: "o",
       name: "Player O",
-      hasWon: false,
       movesCounter: 0,
       secondsCounter: 0,
     },
   },
   currentPlayer: "x",
   timer: 30,
-  availableFields: 9,
-  gameBoard: Array(3).fill(Array(3).fill()),
 };
 
 export const gameSlice = createSlice({
@@ -51,7 +47,6 @@ export const gameSlice = createSlice({
       const player = state.players[state.currentPlayer];
       player.movesCounter += 1;
       player.secondsCounter += initialState.timer - state.timer;
-      console.log(state.players[state.currentPlayer].secondsCounter);
       state.currentPlayer = state.currentPlayer === "x" ? "o" : "x";
       state.timer = initialState.timer;
       return state;
@@ -80,8 +75,7 @@ export const selectGame = (state) => state.game;
 
 export const selectTimer = (state) => state.game.timer;
 
-export const selectCurrentPlayer = (state) =>
-  state.game.players[state.game.currentPlayer];
+export const selectCurrentPlayer = (state) => state.game.currentPlayer;
 
 export const selectNames = (state) => [
   state.game.players.x.name,
