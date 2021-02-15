@@ -34,21 +34,9 @@ const checkIfPlayerWon = (num, arr, player) => {
 }
 
 function Board({player}) {
-  const winner = useSelector(selectWinner);
   const dispatch = useDispatch();
   const [statuses, setStatuses] = useState([]);
   const [availableFields, setAvailableFields] = useState(9);
-
-  useEffect(() => {
-    if (winner) {
-      console.log(winner)
-      return dispatch(statusChanged('won'))
-    } 
-    
-    if (availableFields === 0) {
-      return dispatch(statusChanged('draw'));
-    }
-  })
 
   const fieldStatus = (num) => {
     return statuses[num];
@@ -63,6 +51,9 @@ function Board({player}) {
       newStatuses[num] = player;
       setStatuses(newStatuses);
       setAvailableFields(availableFields - 1);
+      if (availableFields - 1 === 0) {
+        return dispatch(statusChanged('draw'));
+      }
     }
     dispatch(playerTurnEnded({id: player}));
   }
