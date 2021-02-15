@@ -7,14 +7,12 @@ const initialState = {
       name: "Player X",
       movesCounter: 0,
       secondsCounter: 0,
-      hasWon: false,
     },
     o: {
       id: "o",
       name: "Player O",
       movesCounter: 0,
       secondsCounter: 0,
-      hasWon: false,
     },
   },
   timer: 30,
@@ -43,11 +41,6 @@ export const gameSlice = createSlice({
       state.timer = initialState.timer;
       return state;
     },
-    gameWon: (state, action) => {
-      state.players[action.payload].hasWon = true;
-      console.log(state.players[action.payload]);
-      return state;
-    },
     secondPassed: (state) => {
       state.timer -= 1;
       return state;
@@ -63,7 +56,6 @@ export const {
   newGameStarted,
   namesChosen,
   playerTurnEnded,
-  gameWon,
   secondPassed,
   timerReseted,
 } = gameSlice.actions;
@@ -80,12 +72,8 @@ export const selectCurrentPlayer = (state) => {
 
 export const selectWinner = (state) => {
   const { x, o } = state.game.players;
-  if (x.hasWon) {
-    return x;
-  } else if (o.hasWon) {
-    return o;
-  }
-  return false;
+  if (x.movesCounter !== o.movesCounter) return x;
+  return o;
 };
 
 export const selectNames = (state) => [

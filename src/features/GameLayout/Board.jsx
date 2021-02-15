@@ -1,10 +1,8 @@
-import React, {useEffect, useState} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useState} from "react";
+import { useDispatch} from "react-redux";
 import { statusChanged} from "../../app/reducers/statusSlice";
 import {
   playerTurnEnded,
-  gameWon,
-  selectWinner
 } from "../../app/reducers/gameSlice";
 import Field from './Field';
 
@@ -45,7 +43,7 @@ function Board({player}) {
   const markField = (num, player) => {
     if (statuses[num] !== undefined) return;
     if (checkIfPlayerWon(num, statuses, player)) {
-      dispatch(gameWon(player));
+      dispatch(statusChanged('won'));
     } else {
       const newStatuses = [...statuses];
       newStatuses[num] = player;
