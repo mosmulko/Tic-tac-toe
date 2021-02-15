@@ -17,7 +17,7 @@ function  Game() {
       <Label id={player.id}/>
       <h3>{player.name}</h3>
     </div>
-    <Board player={player.id} />
+    <Board player={player} />
     <Timer max={initialTimer} />
   </div>;
 }

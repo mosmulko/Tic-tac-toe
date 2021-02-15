@@ -1,15 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+function compare(a, b) {
+  if (a.seconds < b.seconds) {
+    return -1;
+  }
+  if (a.seconds > b.seconds) {
+    return 1;
+  }
+  if (a.seconds === b.seconds) {
+    if (a.moves < b.moves) {
+      return -1;
+    }
+    if (a.moves > b.moves) {
+      return 1;
+    }
+  }
+  return 0;
+}
+
 export const scoresSlice = createSlice({
   name: "scores",
   initialState: [
-    { name: "Bob", seconds: 25, moves: 3 },
     { name: "Harry", seconds: 28, moves: 3 },
+    { name: "Bob", seconds: 25, moves: 3 },
   ],
   reducers: {
-    scoreAdded: (state = this.initialState, action) => {
+    scoreAdded: (state, action) => {
       state = [...state, action.payload];
-      Object.entries(state).sort((a, b) => b[1].localeCompare(a[1]));
+      state.sort(compare);
+      return state;
     },
   },
 });

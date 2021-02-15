@@ -4,6 +4,9 @@ import { statusChanged} from "../../app/reducers/statusSlice";
 import {
   playerTurnEnded,
 } from "../../app/reducers/gameSlice";
+import {
+  scoreAdded
+} from "../../app/reducers/scoresSlice";
 import Field from './Field';
 
 const range = (min, max) => Array.from({ length: max - min + 1 }, (_, i) => min + i);
@@ -32,6 +35,7 @@ const checkIfPlayerWon = (num, arr, player) => {
 }
 
 function Board({player}) {
+  const {id} = player;
   const dispatch = useDispatch();
   const [statuses, setStatuses] = useState([]);
   const [availableFields, setAvailableFields] = useState(9);
@@ -40,25 +44,30 @@ function Board({player}) {
     return statuses[num];
   }
 
-  const markField = (num, player) => {
+  const markField = (num, id) => {
     if (statuses[num] !== undefined) return;
-    if (checkIfPlayerWon(num, statuses, player)) {
+    if (checkIfPlayerWon(num, statuses, id)) {
+      const payload = { 
+        name: player.name, 
+        seconds: player.secondsCounter, 
+        moves: player.movesCounter }
+      dispatch(scoreAdded(payload))
       dispatch(statusChanged('won'));
     } else {
       const newStatuses = [...statuses];
-      newStatuses[num] = player;
+      newStatuses[num] = id;
       setStatuses(newStatuses);
       setAvailableFields(availableFields - 1);
       if (availableFields - 1 === 0) {
         return dispatch(statusChanged('draw'));
       }
     }
-    dispatch(playerTurnEnded({id: player}));
+    dispatch(playerTurnEnded({id: id}));
   }
 
   return <div id='board'>
     {range(1 ,9).map(num =>
-       <Field key={num} click={() => markField(num, player)}
+       <Field key={num} click={() => markField(num, id)}
        status={fieldStatus(num)}/>)}
   </div>;
 }
