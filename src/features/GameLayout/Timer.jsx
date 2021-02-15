@@ -1,25 +1,18 @@
 import React, { useEffect} from "react";
-import { useDispatch, useSelector} from "react-redux";
-import {
-  playerTurnEnded, secondPassed, selectTimer
-} from "../../app/reducers/gameSlice";
 
 
-function Timer({max}) {
-  const secondsLeft = useSelector(selectTimer);
-  const dispatch = useDispatch();
+function Timer({set, reset, seconds}) {
   useEffect(() => {
-    if (secondsLeft > 0) {
+    if (seconds > 0) {
       const timerId = setTimeout( () => {
-      dispatch(secondPassed());
+      set();
       } , 1000);
       return () => clearTimeout(timerId);
     } 
-    dispatch(playerTurnEnded());
-    // dispatch(timerReseted());
-  }, [secondsLeft, dispatch, max]);
+    reset();
+  }, [set, reset, seconds]);
   return (
-    <div>{secondsLeft}</div>
+    <div>{seconds}</div>
   );
 }
 
