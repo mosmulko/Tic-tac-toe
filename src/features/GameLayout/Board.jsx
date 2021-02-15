@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { statusChanged} from "../../app/reducers/statusSlice";
 import {
-  playerTurnEnded
+  playerTurnEnded,
+  gameWon,
+  selectWinner
 } from "../../app/reducers/gameSlice";
 import Field from './Field';
 
@@ -32,13 +34,14 @@ const checkIfPlayerWon = (num, arr, player) => {
 }
 
 function Board({player}) {
+  const winner = useSelector(selectWinner);
   const dispatch = useDispatch();
   const [statuses, setStatuses] = useState([]);
   const [availableFields, setAvailableFields] = useState(9);
-  const [winner, setWinner] = useState(null);
 
   useEffect(() => {
     if (winner) {
+      console.log(winner)
       return dispatch(statusChanged('won'))
     } 
     
@@ -54,7 +57,7 @@ function Board({player}) {
   const markField = (num, player) => {
     if (statuses[num] !== undefined) return;
     if (checkIfPlayerWon(num, statuses, player)) {
-      setWinner(player)
+      dispatch(gameWon(player));
     } else {
       const newStatuses = [...statuses];
       newStatuses[num] = player;

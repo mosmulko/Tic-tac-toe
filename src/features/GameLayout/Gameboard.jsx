@@ -11,8 +11,6 @@ function  Gameboard() {
   const player = useSelector(selectCurrentPlayer);
   const initialTimer = 30;
 
-  useEffect(() => console.log(player))
-
   return <div>
     <div>
       <h2>Your turn:</h2>
