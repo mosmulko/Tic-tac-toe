@@ -1,38 +1,10 @@
 import React, {useState} from "react";
-import { useDispatch} from "react-redux";
-import { statusChanged} from "../../app/reducers/statusSlice";
-import {
-  playerTurnEnded,
-} from "../../app/reducers/gameSlice";
-import {
-  scoreAdded
-} from "../../app/reducers/scoresSlice";
+import {useDispatch} from "react-redux";
+import {statusChanged} from "../../app/reducers/statusSlice";
+import {playerTurnEnded} from "../../app/reducers/gameSlice";
+import {scoreAdded} from "../../app/reducers/scoresSlice";
+import {range, checkIfPlayerWon} from '../../algorithms';
 import Field from './Field';
-
-const range = (min, max) => Array.from({ length: max - min + 1 }, (_, i) => min + i);
-
-const checkIfPlayerWon = (num, arr, player) => {
-  let fieldMap = new Map();
-  fieldMap.set(num, true);
-
-  var i = arr.indexOf(player);
-  while (i !== -1) {
-    fieldMap.set(i, true);
-  i = arr.indexOf(player, i + 1);
-  }
-  
-  if (
-    (fieldMap.has(1) && fieldMap.has(2) && fieldMap.has(3)) ||
-    (fieldMap.has(4) && fieldMap.has(5) && fieldMap.has(6)) ||
-    (fieldMap.has(7) && fieldMap.has(8) && fieldMap.has(9)) ||
-    (fieldMap.has(1) && fieldMap.has(4) && fieldMap.has(7)) ||
-    (fieldMap.has(2) && fieldMap.has(5) && fieldMap.has(8)) ||
-    (fieldMap.has(3) && fieldMap.has(6) && fieldMap.has(9)) ||
-    (fieldMap.has(1) && fieldMap.has(5) && fieldMap.has(9)) ||
-    (fieldMap.has(3) && fieldMap.has(5) && fieldMap.has(7))
-  ) return true;
-  return false;
-}
 
 function Board({player}) {
   const {id} = player;

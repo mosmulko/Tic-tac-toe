@@ -1,22 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-function compare(a, b) {
-  if (a.seconds < b.seconds) {
-    return -1;
-  }
-  if (a.seconds > b.seconds) {
-    return 1;
-  }
-  if (a.seconds === b.seconds) {
-    if (a.moves < b.moves) {
-      return -1;
-    }
-    if (a.moves > b.moves) {
-      return 1;
-    }
-  }
-  return 0;
-}
+import { compare } from "../../algorithms";
 
 export const scoresSlice = createSlice({
   name: "scores",
