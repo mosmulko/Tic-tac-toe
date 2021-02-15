@@ -15,7 +15,6 @@ const initialState = {
       secondsCounter: 0,
     },
   },
-  currentPlayer: "x",
   timer: 30,
 };
 
@@ -34,20 +33,11 @@ export const gameSlice = createSlice({
       }
       return state;
     },
-    gameFieldMarked: (state, action) => {
-      //run function to check if it was a winning move
-      // if (checkIfWon(state.gameboard, action.payload)) {
-      //   state.currentPlayer.hasWon = true;
-      //   return;
-      // }
-      state.availableFields -= 1;
-      return state;
-    },
-    playerTurnEnded: (state) => {
-      const player = state.players[state.currentPlayer];
+    playerTurnEnded: (state, action) => {
+      const { id } = action.payload;
+      const player = state.players[id];
       player.movesCounter += 1;
       player.secondsCounter += initialState.timer - state.timer;
-      state.currentPlayer = state.currentPlayer === "x" ? "o" : "x";
       state.timer = initialState.timer;
       return state;
     },
@@ -65,7 +55,6 @@ export const gameSlice = createSlice({
 export const {
   newGameStarted,
   namesChosen,
-  gameFieldMarked,
   playerTurnEnded,
   secondPassed,
   timerReseted,
@@ -75,7 +64,11 @@ export const selectGame = (state) => state.game;
 
 export const selectTimer = (state) => state.game.timer;
 
-export const selectCurrentPlayer = (state) => state.game.currentPlayer;
+export const selectCurrentPlayer = (state) => {
+  const { x, o } = state.game.players;
+  if (x.movesCounter === o.movesCounter) return x;
+  return o;
+};
 
 export const selectNames = (state) => [
   state.game.players.x.name,

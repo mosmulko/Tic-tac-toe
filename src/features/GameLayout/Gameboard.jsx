@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
   selectCurrentPlayer,
@@ -11,13 +11,15 @@ function  Gameboard() {
   const player = useSelector(selectCurrentPlayer);
   const initialTimer = 30;
 
+  useEffect(() => console.log(player))
+
   return <div>
     <div>
       <h2>Your turn:</h2>
-      <Label id={player}/>
+      <Label id={player.id}/>
       <h3>{player.name}</h3>
     </div>
-    <Board player={player} />
+    <Board player={player.id} />
     {/* <Timer max={initialTimer} /> */}
   </div>;
 }

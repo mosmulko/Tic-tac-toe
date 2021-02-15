@@ -61,7 +61,7 @@ function Board({player}) {
       setStatuses(newStatuses);
       setAvailableFields(availableFields - 1);
     }
-    dispatch(playerTurnEnded());
+    dispatch(playerTurnEnded({id: player}));
   }
 
   return <div id='board'>
