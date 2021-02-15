@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   playerTurnEnded,
   selectCurrentPlayer,
-} from "../../app/reducers/gameSlice";
+} from "../../app/reducers/playersSlice";
 import {scoreAdded} from "../../app/reducers/scoresSlice";
+import {statusChanged} from "../../app/reducers/statusSlice";
 import Label from "./Label";
 import Timer from "./Timer";
 import Board from "./Board";
@@ -24,10 +25,11 @@ function  Game() {
   const addScoreToLeaderboard = () => {
     const payload = { 
       name: player.name, 
-      seconds: seconds + player.secondsCounter, 
-      moves: player.movesCounter + 1 
+      seconds: seconds + player.seconds, 
+      moves: player.moves + 1 
     }
-    dispatch(scoreAdded(payload))
+    dispatch(scoreAdded(payload));
+    dispatch(statusChanged('won'));
   }
 
   return <div>
@@ -37,10 +39,10 @@ function  Game() {
       <h3>{player.name}</h3>
     </div>
     <Board 
-      player={player} 
+      player={player.id} 
       nextTurn={finishPlayerTurn}
       win={addScoreToLeaderboard}
-      // seconds={seconds}
+      draw={() => dispatch(statusChanged('draw'))}
     />
     <Timer 
       set={() => setSecondsLeft(secondsLeft - 1)} 
