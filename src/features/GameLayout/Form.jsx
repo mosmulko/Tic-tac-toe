@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectStatus } from "../../app/reducers/statusSlice";
-import { selectNames } from "../../app/reducers/gameSlice";
+import { selectNames } from "../../app/reducers/playersSlice";
 import Label from "./Label";
 
 function Form({ submit }) {

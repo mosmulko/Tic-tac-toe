@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import statusReducer from "./reducers/statusSlice";
-import gameReducer from "./reducers/gameSlice";
+import playersReducer from "./reducers/playersSlice";
 import scoresReducer from "./reducers/scoresSlice";
 
 export default configureStore({
   reducer: {
     status: statusReducer,
-    game: gameReducer,
+    players: playersReducer,
     scores: scoresReducer,
   },
 });

@@ -5,7 +5,7 @@ import {
   newGameStarted,
   namesChosen,
   selectNames,
-} from "../../app/reducers/gameSlice";
+} from "../../app/reducers/playersSlice";
 import Form from "./Form";
 import Game from "./Game";
 import Winner from "./Winner";
