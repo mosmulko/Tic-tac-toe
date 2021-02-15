@@ -5,8 +5,9 @@ const algorithms = {
     fieldMap.set(num, true);
 
     var i = arr.indexOf(player);
+
     while (i !== -1) {
-      fieldMap.set(i, true);
+      fieldMap.set(i + 1, true);
       i = arr.indexOf(player, i + 1);
     }
 

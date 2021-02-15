@@ -3,28 +3,27 @@ import {range, checkIfPlayerWon} from '../../algorithms';
 import Field from './Field';
 
 function Board({player, nextTurn, win, draw}) {
-  const [statuses, setStatuses] = useState([]);
-  const [availableFields, setAvailableFields] = useState(9);
+  const [statuses, setStatuses] = useState(Array(9).fill(''));
 
   const markField = (num, player) => {
-    if (statuses[num] !== undefined) return;
+    const i = num - 1;
+    if (statuses[i] !== '') return;
     if (checkIfPlayerWon(num, statuses, player)) {
       return win();
     }
     const newStatuses = [...statuses];
-    newStatuses[num] = player;
-    setStatuses(newStatuses);
-    setAvailableFields(availableFields - 1);
-    if (availableFields - 1 === 0) {
+    newStatuses[i] = player;
+    if (newStatuses.filter((id) => id === '').length === 0) {
       return draw();
     }
+    setStatuses(newStatuses);
     nextTurn();
   }
 
-  return <div player='board'>
+  return <div id='board'>
     {range(1 ,9).map(num =>
        <Field key={num} click={() => markField(num, player)}
-       status={statuses[num]}/>)}
+       status={statuses[num - 1]}/>)}
   </div>;
 }
 export default Board;

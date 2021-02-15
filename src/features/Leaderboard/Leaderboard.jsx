@@ -9,7 +9,7 @@ function Leaderboard() {
       <h2>Leaderboard</h2>
       {scores.map((player, i) => (
         <div key={i}>
-          {i + 1}: {player.name} seconds: {player.seconds} moves:
+          {i + 1}. {player.name} seconds: {player.seconds} moves:
           {player.moves}
         </div>
       ))}

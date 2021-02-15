@@ -12,18 +12,14 @@ export const scoresSlice = createSlice({
   reducers: {
     scoreAdded: (state, action) => {
       const winner = action.payload;
-      state.leaderboard = [...state.leaderboard, winner];
+      state.leaderboard.push(winner);
       state.leaderboard.sort(compare);
       const i = state.leaderboard.findIndex((score) => {
-        if (
-          score.name === winner.name &&
-          score.seconds === winner.seconds &&
-          score.moves === winner.moves
-        ) {
-          return true;
+        for (let key in score) {
+          if (score[key] !== winner[key]) return false;
         }
+        return true;
       });
-      console.log(i);
       winner.place = i + 1;
       state.last = winner;
       return state;
