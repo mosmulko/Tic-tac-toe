@@ -1,12 +1,11 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 import {statusChanged} from "../../app/reducers/statusSlice";
-import {playerTurnEnded} from "../../app/reducers/gameSlice";
-import {scoreAdded} from "../../app/reducers/scoresSlice";
+// import {scoreAdded} from "../../app/reducers/scoresSlice";
 import {range, checkIfPlayerWon} from '../../algorithms';
 import Field from './Field';
 
-function Board({player}) {
+function Board({player, nextTurn, win}) {
   const {id} = player;
   const dispatch = useDispatch();
   const [statuses, setStatuses] = useState([]);
@@ -19,22 +18,18 @@ function Board({player}) {
   const markField = (num, id) => {
     if (statuses[num] !== undefined) return;
     if (checkIfPlayerWon(num, statuses, id)) {
-      const payload = { 
-        name: player.name, 
-        seconds: player.secondsCounter, 
-        moves: player.movesCounter }
-      dispatch(scoreAdded(payload))
+      win();
       dispatch(statusChanged('won'));
-    } else {
-      const newStatuses = [...statuses];
-      newStatuses[num] = id;
-      setStatuses(newStatuses);
-      setAvailableFields(availableFields - 1);
-      if (availableFields - 1 === 0) {
-        return dispatch(statusChanged('draw'));
-      }
+      return;
     }
-    dispatch(playerTurnEnded({id: id}));
+    const newStatuses = [...statuses];
+    newStatuses[num] = id;
+    setStatuses(newStatuses);
+    setAvailableFields(availableFields - 1);
+    if (availableFields - 1 === 0) {
+      return dispatch(statusChanged('draw'));
+    }
+    nextTurn();
   }
 
   return <div id='board'>

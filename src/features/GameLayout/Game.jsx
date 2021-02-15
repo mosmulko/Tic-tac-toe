@@ -4,6 +4,7 @@ import {
   playerTurnEnded,
   selectCurrentPlayer,
 } from "../../app/reducers/gameSlice";
+import {scoreAdded} from "../../app/reducers/scoresSlice";
 import Label from "./Label";
 import Timer from "./Timer";
 import Board from "./Board";
@@ -20,6 +21,15 @@ function  Game() {
     setSecondsLeft(initialTimer);
   }
 
+  const addScoreToLeaderboard = () => {
+    const payload = { 
+      name: player.name, 
+      seconds: seconds + player.secondsCounter, 
+      moves: player.movesCounter + 1 
+    }
+    dispatch(scoreAdded(payload))
+  }
+
   return <div>
     <div>
       <h2>Your turn:</h2>
@@ -29,7 +39,8 @@ function  Game() {
     <Board 
       player={player} 
       nextTurn={finishPlayerTurn}
-      seconds={seconds}
+      win={addScoreToLeaderboard}
+      // seconds={seconds}
     />
     <Timer 
       set={() => setSecondsLeft(secondsLeft - 1)} 
