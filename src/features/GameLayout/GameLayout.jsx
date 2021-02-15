@@ -7,7 +7,7 @@ import {
   selectNames,
 } from "../../app/reducers/gameSlice";
 import Form from "./Form";
-import Gameboard from "./Gameboard";
+import Game from "./Game";
 import Winner from "./Winner";
 import Draw from "./Draw";
 import Button from './Button';
@@ -36,7 +36,7 @@ function GameLayout() {
       {
         {
           new: <Form submit={startNewGame} />,
-          playing: <Gameboard/>,
+          playing: <Game/>,
           won: <Winner />,
           draw: <Draw />,
         }[status]

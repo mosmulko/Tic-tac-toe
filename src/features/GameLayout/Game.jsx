@@ -7,7 +7,7 @@ import Label from "./Label";
 import Timer from "./Timer";
 import Board from "./Board";
 
-function  Gameboard() {
+function  Game() {
   const player = useSelector(selectCurrentPlayer);
   const initialTimer = 30;
 
@@ -22,4 +22,4 @@ function  Gameboard() {
   </div>;
 }
 
-export default Gameboard;
+export default Game;
