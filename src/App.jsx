@@ -6,9 +6,13 @@ import GameLayout from "./features/GameLayout/GameLayout";
 import Leaderboard from "./features/Leaderboard/Leaderboard";
 
 function App() {
-  const [visibility, setVisibility] = useState('');
-  var ulClasses = `menu ${visibility}`;
-  const changeNavDisplay = () => visibility === '' ? setVisibility('visible') : setVisibility('');
+  const changeNavDisplay = () => {
+    const elements = document.getElementsByClassName('menu');
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].classList.toggle('hidden')
+    }
+  };
+
   return (
     <Router>
       <div className="appGrid">
@@ -16,12 +20,12 @@ function App() {
         <div id='burger' onClick={changeNavDisplay}>
           <span></span>
         </div>
-        <nav className={visibility}>
-          <ul className={ulClasses}>
-            <li>
+        <nav className='menu hidden'>
+          <ul className='menu hidden'>
+            <li onClick={changeNavDisplay}>
               <Link to="/game">Game</Link> 
             </li>
-            <li>
+            <li onClick={changeNavDisplay}>
               <Link to="/leaderboard">Leaderboard</Link>
             </li>
           </ul>
