@@ -6,7 +6,7 @@ import Label from "./Label";
 
 function Form({ submit }) {
   const names = useSelector(selectNames);
-  const [x, o] = names;
+  const [playerXName, playerOName] = names;
 
 //change to single state with both names
   const [xName, setXName] = useState("");
@@ -37,7 +37,7 @@ function Form({ submit }) {
           <input
             name="x"
             type="text"
-            placeholder={x}
+            placeholder={playerXName}
             value={xName}
             onChange={handleInputChange}
           />
@@ -48,7 +48,7 @@ function Form({ submit }) {
           <input
             name="o"
             type="text"
-            placeholder={o}
+            placeholder={playerOName}
             value={oName}
             onChange={handleInputChange}
           />

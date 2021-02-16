@@ -19,9 +19,9 @@ function GameLayout() {
 
   const startNewGame = (status, names) => {
     let newStatus = status === "playing" ? "new" : "playing";
-    let [x, o] = names;
+    const [playerXName, playerOName] = names;
     dispatch(newGameStarted());
-    dispatch(namesChosen({ x: x, o: o }));
+    dispatch(namesChosen({ x: playerXName, o: playerOName }));
     dispatch(statusChanged(newStatus));
   };
 
