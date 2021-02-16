@@ -1,0 +1,54 @@
+#board {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 50vh;
+}
+
+.field {
+  border: 0.5vh solid black;
+}
+
+.field,
+.label {
+  height: 12vh;
+  width: 12vh;
+}
+
+.field.f-1,
+.field.f-2,
+.field.f-3 {
+  border-top: none;
+}
+
+.field.f-1,
+.field.f-4,
+.field.f-7 {
+  border-left: none;
+}
+
+.field.f-3,
+.field.f-6,
+.field.f-9 {
+  border-right: none;
+}
+
+.field.f-7,
+.field.f-8,
+.field.f-9 {
+  border-bottom: none;
+}
+
+.label {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.label.x {
+  background-image: url("../../public/images/x-symbol.svg");
+}
+
+.label.o {
+  background-image: url("../../public/images/o-symbol.svg");
+}

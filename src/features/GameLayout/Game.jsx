@@ -6,6 +6,7 @@ import {
 } from "../../app/reducers/playersSlice";
 import {scoreAdded} from "../../app/reducers/scoresSlice";
 import {statusChanged} from "../../app/reducers/statusSlice";
+import './Game.css';
 import Label from "./Label";
 import Timer from "./Timer";
 import Board from "./Board";

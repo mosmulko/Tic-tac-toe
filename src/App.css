@@ -63,20 +63,6 @@ ul {
   visibility: hidden;
 }
 
-#board {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 12em;
-}
-
-.field {
-  height: 3.75em;
-  width: 3.75em;
-  background-color: white;
-  border: 2px solid black;
-}
-
 @media only screen and (max-device-width: 740px) {
   header,
   main,

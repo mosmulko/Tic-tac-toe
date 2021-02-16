@@ -23,7 +23,7 @@ function Board({player, nextTurn, win, draw}) {
   return <div id='board'>
     {range(1 ,9).map(num =>
        <Field key={num} click={() => markField(num, player)}
-       status={statuses[num - 1]}/>)}
+       num={num} status={statuses[num - 1]}/>)}
   </div>;
 }
 export default Board;
