@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {range, checkIfPlayerWon} from '../../algorithms';
+import {range, checkIfPlayerWon} from '../../../algorithms';
 import Field from './Field';
 
 function Board({player, nextTurn, win, draw}) {

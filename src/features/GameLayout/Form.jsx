@@ -30,29 +30,33 @@ function Form({ submit }) {
   };
 
   return (
-    <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <label>
-          <Label id={"x"} />
+    <div id='form-wrapper'>
+      <h3 className='title'>Choose your players</h3>
+      <form className='flex' onSubmit={(e) => handleSubmit(e)}>
+        <div className='input flex'>
+          <label for="Player X">
+            <Label id={"x"} />
+          </label>
           <input
             name="x"
             type="text"
-            placeholder={playerXName}
+            placeholder={playerXName || 'Player X name'}
             value={xName}
             onChange={handleInputChange}
           />
-        </label>
-        <br></br>
-        <label>
-          <Label id={"o"} />
+        </div>
+        <div className='input flex'>
+          <label for="Player O">
+            <Label id={"o"} />
+          </label>
           <input
             name="o"
             type="text"
-            placeholder={playerOName}
+            placeholder={playerOName || 'Player O name'}
             value={oName}
             onChange={handleInputChange}
           />
-        </label>
+        </div>
         <button type="submit">Start</button>
       </form>
     </div>

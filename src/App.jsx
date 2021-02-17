@@ -16,11 +16,11 @@ function App() {
   return (
     <Router>
       <div className="appGrid">
-        <header>Tic-Tac-Toe Game for 2!</header>
+        <header className='flex center'><div id='title'>Tic Tac Toe</div></header>
         <div id='burger' onClick={changeNavDisplay}>
           <span></span>
         </div>
-        <nav className='menu hidden'>
+        <nav className='menu hidden flex center'>
           <ul className='menu hidden'>
             <li onClick={changeNavDisplay}>
               <Link to="/game">Game</Link> 
@@ -45,7 +45,7 @@ function App() {
           </Switch>
         </main>
 
-        <footer>Designed and coded by Monika Smulko</footer>
+        <footer className='flex'><div>Designed and coded by Monika Smulko</div></footer>
       </div>
     </Router>
   );

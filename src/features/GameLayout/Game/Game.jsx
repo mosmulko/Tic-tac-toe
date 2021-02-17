@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   playerTurnEnded,
   selectCurrentPlayer,
-} from "../../app/reducers/playersSlice";
-import {scoreAdded} from "../../app/reducers/scoresSlice";
-import {statusChanged} from "../../app/reducers/statusSlice";
+} from "../../../app/reducers/playersSlice";
+import {scoreAdded} from "../../../app/reducers/scoresSlice";
+import {statusChanged} from "../../../app/reducers/statusSlice";
 import './Game.css';
-import Label from "./Label";
+import Label from "../Label";
 import Timer from "./Timer";
 import Board from "./Board";
 
@@ -33,22 +33,30 @@ function  Game() {
     dispatch(statusChanged('won'));
   }
 
-  return <div>
-    <div>
-      <h2>Your turn:</h2>
-      <Label id={player.id}/>
-      <h3>{player.name}</h3>
+  return <div id='game-wrapper' className='flex center column'>
+    <div id='turn-display' className='flex center'>
+      {/* <div className='turn-display flex center'>
+        <Label id={player.id}/>
+       {
+         player.name ? <h3>{player.name}</h3> : null
+       }
+      </div> */}
+       <Label id={player.id}/>
+       {
+         player.name ? <h3>{player.name}</h3> : null
+       }
+      <div id='timer'>:{seconds}</div>
+      {/* <Timer 
+        set={() => setSecondsLeft(secondsLeft - 1)} 
+        reset={finishPlayerTurn}
+        seconds={secondsLeft}
+      /> */}
     </div>
     <Board 
       player={player.id} 
       nextTurn={finishPlayerTurn}
       win={addScoreToLeaderboard}
       draw={() => dispatch(statusChanged('draw'))}
-    />
-    <Timer 
-      set={() => setSecondsLeft(secondsLeft - 1)} 
-      reset={finishPlayerTurn}
-      seconds={secondsLeft}
     />
   </div>;
 }

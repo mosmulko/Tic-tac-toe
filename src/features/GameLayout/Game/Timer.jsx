@@ -12,7 +12,7 @@ function Timer({set, reset, seconds}) {
     reset();
   }, [set, reset, seconds]);
   return (
-    <div>{seconds}</div>
+    <div id='timer'>{seconds}</div>
   );
 }
 
