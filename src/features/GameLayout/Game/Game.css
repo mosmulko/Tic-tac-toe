@@ -1,8 +1,28 @@
+#game-wrapper {
+  width: 80vw;
+}
+
+#turn-display {
+  justify-content: space-between;
+  width: 80%;
+}
+
+#turn-display h3 {
+  font-size: 40px;
+  /* padding-right: 6vh; */
+}
+
+#timer {
+  font-size: 70px;
+  margin-right: 6vw;
+}
+
 #board {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 50vh;
+  width: 38vh;
+  margin-top: 8vh;
 }
 
 .field {
@@ -46,9 +66,16 @@
 }
 
 .label.x {
-  background-image: url("../../public/images/x-symbol.svg");
+  background-image: url("../../../public/images/x-symbol.svg");
 }
 
 .label.o {
-  background-image: url("../../public/images/o-symbol.svg");
+  background-image: url("../../../public/images/o-symbol.svg");
+}
+
+@media only screen and (max-device-width: 740px) and (orientation: landscape) {
+  #turn-display {
+    justify-content: center;
+    width: 100%;
+  }
 }

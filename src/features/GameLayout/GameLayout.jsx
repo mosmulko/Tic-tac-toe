@@ -6,8 +6,9 @@ import {
   namesChosen,
   selectNames,
 } from "../../app/reducers/playersSlice";
+import './GameLayout.css'
 import Form from "./Form";
-import Game from "./Game";
+import Game from "./Game/Game";
 import Winner from "./Winner";
 import Draw from "./Draw";
 import Button from './Button';
@@ -28,11 +29,11 @@ function GameLayout() {
   const handleButtonRender = (status, names) => {
     if (status === "new") return;
     let message = status === "playing" ? "Reset" : "Start";
-    return <Button click={() => startNewGame(status, names)} message={message} />;
+    return <Button click={() => startNewGame(status, names)} message={message} type='game'/>;
   };
 
   return (
-    <div>
+    <div id='layout' className='flex center column'>
       {
         {
           new: <Form submit={startNewGame} />,

@@ -1,0 +1,63 @@
+#game-layout {
+  width: 100%;
+}
+
+/* Form Component styling */
+
+h3.title {
+  text-align: center;
+  line-height: 35px;
+  margin: 5vh 0;
+}
+
+form {
+  height: 60%;
+  margin-top: 7vh;
+}
+
+form.flex {
+  flex-direction: column;
+  align-items: center;
+}
+
+form div.input {
+  margin: 5vh 0;
+}
+
+form div.label {
+  height: 6vh;
+  width: 6vh;
+  margin-right: 2vh;
+}
+
+form input[type="text"] {
+  font-size: 20px;
+}
+
+form button {
+  margin-top: 5vh;
+}
+
+button.game {
+  margin: 5vh 0;
+}
+
+@media only screen and (max-device-width: 740px) and (orientation: landscape) {
+  form {
+    margin-top: 2vh;
+  }
+
+  form div.label {
+    height: 6vw;
+    width: 6vw;
+    margin-right: 3vh;
+  }
+
+  form div.input {
+    margin: 0;
+  }
+
+  form button {
+    margin-top: 5vh;
+  }
+}
