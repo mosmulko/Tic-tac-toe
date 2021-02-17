@@ -13,7 +13,7 @@ function Board({player, nextTurn, win, draw}) {
     if (checkIfPlayerWon(newStatuses, player)) {
       return win();
     }
-    if (newStatuses.filter((id) => id === '').length === 0) {
+    if (newStatuses.indexOf('') === -1) {
       return draw();
     }
     setStatuses(newStatuses);
