@@ -8,11 +8,11 @@ function Board({player, nextTurn, win, draw}) {
   const markField = (num, player) => {
     const i = num - 1;
     if (statuses[i] !== '') return;
-    if (checkIfPlayerWon(num, statuses, player)) {
-      return win();
-    }
     const newStatuses = [...statuses];
     newStatuses[i] = player;
+    if (checkIfPlayerWon(newStatuses, player)) {
+      return win();
+    }
     if (newStatuses.filter((id) => id === '').length === 0) {
       return draw();
     }

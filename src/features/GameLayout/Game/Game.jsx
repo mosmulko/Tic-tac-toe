@@ -15,18 +15,18 @@ function  Game() {
   const player = useSelector(selectCurrentPlayer);
   const dispatch = useDispatch();
   const initialTimer = 30;
-  const [secondsLeft, setSecondsLeft] = useState(initialTimer);
-  const seconds = initialTimer - secondsLeft;
+  const [secondsElapsed, setsecondsElapsed] = useState(initialTimer);
+  const secondsGained = initialTimer - secondsElapsed;
 
   const finishPlayerTurn = () => {
-    dispatch(playerTurnEnded({id: player.id, seconds: seconds}));
-    setSecondsLeft(initialTimer);
+    dispatch(playerTurnEnded({id: player.id, seconds: secondsGained}));
+    setsecondsElapsed(initialTimer);
   }
 
   const addScoreToLeaderboard = () => {
     const payload = { 
       name: player.name, 
-      seconds: seconds + player.seconds, 
+      seconds: secondsGained + player.seconds, 
       moves: player.moves + 1 
     }
     dispatch(scoreAdded(payload));
@@ -45,12 +45,12 @@ function  Game() {
        {
          player.name ? <h3>{player.name}</h3> : null
        }
-      <div id='timer'>:{seconds}</div>
-      {/* <Timer 
-        set={() => setSecondsLeft(secondsLeft - 1)} 
+      {/* <div id='timer'>:{secondsGained}</div> */}
+      <Timer 
+        set={() => setsecondsElapsed(secondsElapsed - 1)} 
         reset={finishPlayerTurn}
-        seconds={secondsLeft}
-      /> */}
+        seconds={secondsElapsed}
+      />
     </div>
     <Board 
       player={player.id} 

@@ -15,14 +15,14 @@ import Button from './Button';
 
 function GameLayout() {
   const status = useSelector(selectStatus);
-  const names = useSelector(selectNames);
+  const chosenNames = useSelector(selectNames);
   const dispatch = useDispatch();
 
   const startNewGame = (status, names) => {
     let newStatus = status === "playing" ? "new" : "playing";
-    const [playerXName, playerOName] = names;
+    let [x, o] = names;
     dispatch(newGameStarted());
-    dispatch(namesChosen({ x: playerXName, o: playerOName }));
+    dispatch(namesChosen({ x: x, o: o }));
     dispatch(statusChanged(newStatus));
   };
 
@@ -42,7 +42,7 @@ function GameLayout() {
           draw: <Draw />,
         }[status]
       }
-      {handleButtonRender(status, names)}
+      {handleButtonRender(status, chosenNames)}
     </div>
   );
 }

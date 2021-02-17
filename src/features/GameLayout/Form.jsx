@@ -34,25 +34,21 @@ function Form({ submit }) {
       <h3 className='title'>Choose your players</h3>
       <form className='flex' onSubmit={(e) => handleSubmit(e)}>
         <div className='input flex'>
-          <label for="Player X">
-            <Label id={"x"} />
-          </label>
+          <Label id={"x"} />
           <input
             name="x"
             type="text"
-            placeholder={playerXName || 'Player X name'}
+            placeholder={playerXName !== '' ? playerXName : 'Player X name'}
             value={xName}
             onChange={handleInputChange}
           />
         </div>
         <div className='input flex'>
-          <label for="Player O">
-            <Label id={"o"} />
-          </label>
+          <Label id={"o"} />
           <input
             name="o"
             type="text"
-            placeholder={playerOName || 'Player O name'}
+            placeholder={playerOName !== '' ? playerOName : 'Player O name'}
             value={oName}
             onChange={handleInputChange}
           />
