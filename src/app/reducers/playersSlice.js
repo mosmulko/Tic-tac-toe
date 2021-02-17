@@ -3,13 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   x: {
     id: "x",
-    name: null,
+    name: "",
     moves: 0,
     seconds: 0,
   },
   o: {
     id: "o",
-    name: null,
+    name: "",
     moves: 0,
     seconds: 0,
   },

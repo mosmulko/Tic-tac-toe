@@ -1,10 +1,10 @@
 const algorithms = {
   range: (min, max) => Array.from({ length: max - min + 1 }, (_, i) => min + i),
-  checkIfPlayerWon: (num, arr, player) => {
-    let fieldMap = new Map();
-    fieldMap.set(num, true);
+  checkIfPlayerWon: (arr, player) => {
+    if (arr.length === 0) return false;
 
-    var i = arr.indexOf(player);
+    const fieldMap = new Map();
+    let i = arr.indexOf(player);
 
     while (i !== -1) {
       fieldMap.set(i + 1, true);
@@ -24,7 +24,7 @@ const algorithms = {
       return true;
     return false;
   },
-  compare: (a, b) => {
+  compareScores: (a, b) => {
     if (a.seconds < b.seconds) {
       return -1;
     }
@@ -43,4 +43,4 @@ const algorithms = {
   },
 };
 
-export const { range, checkIfPlayerWon, compare } = algorithms;
+export const { range, checkIfPlayerWon, compareScores } = algorithms;

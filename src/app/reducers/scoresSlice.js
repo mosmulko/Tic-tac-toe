@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { compare } from "../../algorithms";
+import { compareScores } from "../../algorithms";
 
 const initialState = {
-  last: null,
+  lastWinner: null,
   leaderboard: [],
 };
 
@@ -13,7 +13,7 @@ export const scoresSlice = createSlice({
     scoreAdded: (state, action) => {
       const winner = action.payload;
       state.leaderboard.push(winner);
-      state.leaderboard.sort(compare);
+      state.leaderboard.sort(compareScores);
       const i = state.leaderboard.findIndex((score) => {
         for (let key in score) {
           if (score[key] !== winner[key]) return false;
@@ -21,7 +21,7 @@ export const scoresSlice = createSlice({
         return true;
       });
       winner.place = i + 1;
-      state.last = winner;
+      state.lastWinner = winner;
       return state;
     },
   },
@@ -31,6 +31,6 @@ export const { scoreAdded } = scoresSlice.actions;
 
 export const selectScores = (state) => state.scores.leaderboard;
 
-export const selectWinner = (state) => state.scores.last;
+export const selectWinner = (state) => state.scores.lastWinner;
 
 export default scoresSlice.reducer;
