@@ -10,7 +10,6 @@ import './GameLayout.css'
 import Form from "./Form";
 import Game from "./Game/Game";
 import Winner from "./Winner";
-import Draw from "./Draw";
 import Button from '../Button';
 
 function GameLayout() {
@@ -39,7 +38,7 @@ function GameLayout() {
           new: <Form submit={startNewGame} />,
           playing: <Game/>,
           won: <Winner />,
-          draw: <Draw />,
+          draw: <h3 className='title'>It's a draw</h3>,
         }[status]
       }
       {handleButtonRender(status, chosenNames)}

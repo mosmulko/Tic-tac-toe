@@ -4,11 +4,7 @@ import Button from '../Button';
 function Home() {
   return (
     <div id='home-wrapper' className='flex center column'>
-      <h1>Welcome!</h1>
-      <h2>Do you remember that joyfull game you were playing with your friends at school?</h2>
-      <p>Oh the sweet escape from the boring voice of your teacher...</p>
-      <h2>Time to relieve the memories!</h2>
-      <p>So grab your friend and LET'S PLAY</p>
+      <h1>Welcome to Tic Tac Toe game for two!</h1>
       <h3>Rules</h3>
       <ol>
         <li>Choose your names to see your greatest victory on the Leaderboard</li>

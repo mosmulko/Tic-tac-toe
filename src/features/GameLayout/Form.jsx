@@ -51,7 +51,6 @@ function Form({ submit }) {
           />
         </div>
         <Button  message='Start' className='game' type='submit'/>
-        {/* <button type="submit">Start</button> */}
       </form>
     </div>
   );

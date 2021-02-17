@@ -37,6 +37,10 @@ function  Game() {
     dispatch(statusChanged('draw'))
   }
 
+  const makeTimerCount = () => {
+    setsecondsElapsed(secondsElapsed - 1)
+  }
+
   return <div id='game-wrapper'>
       {
         player.name ? <h3>{player.name}</h3> : null
@@ -45,7 +49,7 @@ function  Game() {
       <Label id={player.id}/>
     </div>
     <Timer 
-      set={() => setsecondsElapsed(secondsElapsed - 1)} 
+      set={makeTimerCount} 
       reset={finishPlayerTurn}
       seconds={secondsElapsed}
     />

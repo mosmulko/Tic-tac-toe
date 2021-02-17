@@ -14,7 +14,7 @@ function Leaderboard() {
             <th>Place</th>
             <th>Name</th>
             <th>Seconds</th>
-            <th>Moves</th>
+            <th>Turns</th>
           </tr>
         </thead>
         <tbody>
