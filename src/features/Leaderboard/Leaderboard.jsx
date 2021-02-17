@@ -7,7 +7,7 @@ function Leaderboard() {
   const scores = useSelector(selectScores);
   return (
     <div>
-      <h2>Leaderboard</h2>
+      <h3 className='title'>Leaderboard</h3>
        <table>
        <thead>
           <tr>

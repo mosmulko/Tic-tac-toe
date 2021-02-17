@@ -4,12 +4,6 @@
 
 /* Form Component styling */
 
-h3.title {
-  text-align: center;
-  line-height: 35px;
-  margin: 5vh 0;
-}
-
 form {
   height: 60%;
   margin-top: 7vh;
@@ -38,13 +32,26 @@ form button {
   margin-top: 5vh;
 }
 
-button.game {
-  margin: 5vh 0;
+/* Winner Component styling */
+
+#win-wrapper h3,
+h2,
+li {
+  text-align: center;
+}
+
+#win-wrapper h2 {
+  font-size: 50px;
+}
+
+#score-wrapper {
+  margin-top: 7vh;
+  font-size: 18px;
 }
 
 @media only screen and (max-device-width: 740px) and (orientation: landscape) {
   form {
-    margin-top: 2vh;
+    margin-top: 15vh;
   }
 
   form div.label {

@@ -45,7 +45,7 @@ function App() {
           </Switch>
         </main>
 
-        <footer className='flex'><div>Designed and coded by Monika Smulko</div></footer>
+        <footer className='flex'><div>By Monika Smulko</div></footer>
       </div>
     </Router>
   );

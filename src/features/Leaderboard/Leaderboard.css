@@ -1,18 +1,20 @@
 table {
   border-collapse: collapse;
-  border: 2px solid rgb(200, 200, 200);
+  border: 2px solid black;
   letter-spacing: 1px;
   font-size: 0.8rem;
+  width: 60vw;
 }
 
 td,
 th {
-  border: 1px solid rgb(190, 190, 190);
+  border: 1px solid black;
   padding: 10px 20px;
 }
 
 th {
-  background-color: rgb(190, 190, 190);
+  color: white;
+  background-color: rgb(69, 100, 240);
 }
 
 td {
@@ -29,4 +31,19 @@ tr:nth-child(odd) td {
 
 caption {
   padding: 10px;
+}
+
+@media only screen and (max-device-width: 800px) and (orientation: portrait) {
+  /* table {
+    border-collapse: collapse;
+    border: 2px solid black;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    width: 60vw;
+  } */
+
+  td,
+  th {
+    padding: 8px 12px;
+  }
 }

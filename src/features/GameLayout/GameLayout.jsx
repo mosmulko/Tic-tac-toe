@@ -11,7 +11,7 @@ import Form from "./Form";
 import Game from "./Game/Game";
 import Winner from "./Winner";
 import Draw from "./Draw";
-import Button from './Button';
+import Button from '../Button';
 
 function GameLayout() {
   const status = useSelector(selectStatus);
@@ -29,11 +29,11 @@ function GameLayout() {
   const handleButtonRender = (status, names) => {
     if (status === "new") return;
     let message = status === "playing" ? "Reset" : "Start";
-    return <Button click={() => startNewGame(status, names)} message={message} type='game'/>;
+    return <Button click={() => startNewGame(status, names)} message={message} className='game'/>;
   };
 
   return (
-    <div id='layout' className='flex center column'>
+    <div>
       {
         {
           new: <Form submit={startNewGame} />,

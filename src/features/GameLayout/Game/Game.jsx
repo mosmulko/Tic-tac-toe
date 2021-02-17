@@ -23,7 +23,7 @@ function  Game() {
     setsecondsElapsed(initialTimer);
   }
 
-  const addScoreToLeaderboard = () => {
+  const endGameWithWin = () => {
     const payload = { 
       name: player.name, 
       seconds: secondsGained + player.seconds, 
@@ -33,30 +33,27 @@ function  Game() {
     dispatch(statusChanged('won'));
   }
 
-  return <div id='game-wrapper' className='flex center column'>
-    <div id='turn-display' className='flex center'>
-      {/* <div className='turn-display flex center'>
-        <Label id={player.id}/>
-       {
-         player.name ? <h3>{player.name}</h3> : null
-       }
-      </div> */}
-       <Label id={player.id}/>
-       {
-         player.name ? <h3>{player.name}</h3> : null
-       }
-      {/* <div id='timer'>:{secondsGained}</div> */}
-      <Timer 
-        set={() => setsecondsElapsed(secondsElapsed - 1)} 
-        reset={finishPlayerTurn}
-        seconds={secondsElapsed}
-      />
+  const announceDraw = () => {
+    dispatch(statusChanged('draw'))
+  }
+
+  return <div id='game-wrapper'>
+      {
+        player.name ? <h3>{player.name}</h3> : null
+      }
+    <div id='turn-label'>
+      <Label id={player.id}/>
     </div>
+    <Timer 
+      set={() => setsecondsElapsed(secondsElapsed - 1)} 
+      reset={finishPlayerTurn}
+      seconds={secondsElapsed}
+    />
     <Board 
       player={player.id} 
       nextTurn={finishPlayerTurn}
-      win={addScoreToLeaderboard}
-      draw={() => dispatch(statusChanged('draw'))}
+      win={endGameWithWin}
+      draw={announceDraw}
     />
   </div>;
 }

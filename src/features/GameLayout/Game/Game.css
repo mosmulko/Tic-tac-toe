@@ -1,28 +1,44 @@
 #game-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 30% 70%;
   width: 80vw;
+  height: 100%;
 }
 
-#turn-display {
-  justify-content: space-between;
-  width: 80%;
+#game-wrapper h3,
+#turn-label,
+#timer,
+#board {
+  justify-self: center;
+  align-self: center;
 }
 
-#turn-display h3 {
-  font-size: 40px;
-  /* padding-right: 6vh; */
+#game-wrapper h3 {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+
+#turn-label {
+  grid-column: 1/2;
+  grid-row: 1/2;
 }
 
 #timer {
-  font-size: 70px;
-  margin-right: 6vw;
+  grid-column: 3/4;
+  grid-row: 1/2;
+  font-size: 15vh;
 }
 
 #board {
+  grid-column: 1/-1;
+  grid-row: 2/3;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 38vh;
-  margin-top: 8vh;
+  height: fit-content;
+  margin-top: -9vh;
 }
 
 .field {
@@ -73,9 +89,74 @@
   background-image: url("../../../public/images/o-symbol.svg");
 }
 
-@media only screen and (max-device-width: 740px) and (orientation: landscape) {
-  #turn-display {
-    justify-content: center;
-    width: 100%;
+@media only screen and (max-device-width: 800px) and (orientation: portrait) {
+  #game-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 10% 20% 70%;
+    width: 100vw;
+  }
+
+  #game-wrapper h3 {
+    grid-column: 1/3;
+    grid-row: 1/2;
+    font-size: 30px;
+  }
+
+  #turn-label {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+
+  #timer {
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
+
+  #board {
+    grid-column: 1/3;
+    grid-row: 3/4;
+  }
+}
+
+@media only screen and (max-device-width: 800px) and (orientation: landscape) {
+  #game-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    width: 100vw;
+  }
+
+  #game-wrapper h3 {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    font-size: 30px;
+  }
+
+  #turn-label {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    justify-self: end;
+    margin-right: 5vw;
+  }
+
+  #timer {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    justify-self: start;
+    margin-left: 10vw;
+  }
+
+  #board {
+    grid-column: 2/3;
+    grid-row: 1/-1;
+    width: 38vw;
+    margin: 0;
+  }
+
+  .field,
+  .label {
+    height: 12vw;
+    width: 12vw;
   }
 }
