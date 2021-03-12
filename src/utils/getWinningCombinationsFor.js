@@ -1,4 +1,7 @@
 export default function getWinningCombinationsFor(field) {
+  if (!field || 0 > field[0] || field[0] > 2 || 0 > field[1] || field[1] > 2)
+    return [];
+
   const row = field[0];
   const col = field[1];
   const winningPairsArray = [];
