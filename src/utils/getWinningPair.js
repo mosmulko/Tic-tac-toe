@@ -1,27 +1,30 @@
-export default function getWinningPair(markedField, max, status) {
-  let [row, col] = markedField;
+export default function getWinningPair(markedField, status) {
+  if (!markedField || !status || typeof +markedField !== 'number') return [];
+  
+  const [row, col] = markedField;
   const winningPair = [];
   let matchedField;
-  let numToSkip = +row;
-  for (let i = 0, j = max - 1; i < max; i++, j--) {
+  let iToSkip = +row;
+
+  for (let i = 0, j = 2; i < 3; i++, j--) {
     switch (status) {
       case "row":
         matchedField = `${row}${i}`;
-        numToSkip = +col;
+        iToSkip = +col;
         break;
       case "col":
         matchedField = `${i}${col}`;
         break;
-      case "equal":
+      case "left-axis":
         matchedField = `${i}${i}`;
         break;
-      case "sum":
+      case "right-axis":
         matchedField = `${i}${j}`;
         break;
       default:
         matchedField = "";
     }
-    if (i !== numToSkip) winningPair.push(matchedField);
+    if (i !== iToSkip) winningPair.push(matchedField);
   }
   return winningPair;
 }
