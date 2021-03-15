@@ -3,9 +3,9 @@ import getWinningCombinationsFor from "../getWinningCombinationsFor";
 describe("getWinningCombinationsFor", () => {
   it("returns an array of possible winning matches for the field '00'", function () {
     let expected = [
+      ["11", "22"],
       ["01", "02"],
       ["10", "20"],
-      ["11", "22"],
     ];
     let actual = getWinningCombinationsFor("00");
     expect(actual).toEqual(expected);
@@ -13,10 +13,10 @@ describe("getWinningCombinationsFor", () => {
 
   it("returns an array of possible winning matches for the field '11'", function () {
     let expected = [
-      ["10", "12"],
-      ["01", "21"],
       ["00", "22"],
       ["02", "20"],
+      ["10", "12"],
+      ["01", "21"],
     ];
     let actual = getWinningCombinationsFor("11");
     expect(actual).toEqual(expected);
