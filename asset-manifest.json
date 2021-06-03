@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Tic-tac-toe/static/css/main.956cb0a1.chunk.css",
+    "main.js": "/Tic-tac-toe/static/js/main.e1752402.chunk.js",
+    "main.js.map": "/Tic-tac-toe/static/js/main.e1752402.chunk.js.map",
+    "runtime-main.js": "/Tic-tac-toe/static/js/runtime-main.d7339e32.js",
+    "runtime-main.js.map": "/Tic-tac-toe/static/js/runtime-main.d7339e32.js.map",
+    "static/js/2.3517ca06.chunk.js": "/Tic-tac-toe/static/js/2.3517ca06.chunk.js",
+    "static/js/2.3517ca06.chunk.js.map": "/Tic-tac-toe/static/js/2.3517ca06.chunk.js.map",
+    "index.html": "/Tic-tac-toe/index.html",
+    "static/css/main.956cb0a1.chunk.css.map": "/Tic-tac-toe/static/css/main.956cb0a1.chunk.css.map",
+    "static/js/2.3517ca06.chunk.js.LICENSE.txt": "/Tic-tac-toe/static/js/2.3517ca06.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/Tic-tac-toe/static/media/montserrat-semibold-webfont.d6964f9d.woff2",
+    "static/media/Game.css": "/Tic-tac-toe/static/media/x-symbol.b0f09f7f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d7339e32.js",
+    "static/js/2.3517ca06.chunk.js",
+    "static/css/main.956cb0a1.chunk.css",
+    "static/js/main.e1752402.chunk.js"
+  ]
+}
